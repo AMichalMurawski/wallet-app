@@ -1,0 +1,76 @@
+@use 'src/stylesheet/vars' as *;
+
+@mixin window {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+}
+
+.desktop {
+  &-window {
+    @include window;
+    @include flex-display(row, 50px);
+  }
+
+  &-icon {
+    flex-basis: calc(42.9%);
+    height: auto;
+    @include flex-display(column, null, center, flex-end);
+    padding-right: 40px;
+
+    &__box {
+      @include flex-display(column, 28px, null, center);
+
+      &::after {
+        content: 'Finance App';
+        @include font-type(null, 30px, 1.5);
+      }
+    }
+  }
+
+  &-form {
+    flex-basis: calc(57.1%);
+    height: auto;
+    background-color: var(--bg-blur);
+    backdrop-filter: blur(25px);
+    @include flex-display(column, null, center, flex-start);
+    padding-left: 107px;
+  }
+}
+
+.tablet {
+  &-window {
+    @include window;
+    @include flex-display(column, 50px, null, center);
+    padding: 60px 118px 48px;
+  }
+
+  &-icon__box {
+    width: 534px;
+    @include flex-display(row, 40px, flex-start, center);
+
+    &::after {
+      content: 'Finance App';
+      @include font-type(null, 30px, 1.5);
+    }
+  }
+
+  &-form {
+    height: auto;
+    width: 100%;
+    @include flex-display(column, null, center, center);
+  }
+}
+
+.mobile {
+  &-window {
+    @include window;
+  }
+
+  &-form {
+    height: auto;
+    background-color: var(--bg-blur);
+    backdrop-filter: blur(25px);
+    @include flex-display(column, null, null, center);
+  }
+}
