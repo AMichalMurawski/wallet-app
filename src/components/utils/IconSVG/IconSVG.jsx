@@ -1,4 +1,3 @@
-import { ReactSVG } from 'react-svg';
 import icons from '../../../images/icons.svg';
 import scss from './IconSVG.module.scss';
 

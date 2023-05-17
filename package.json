@@ -12,6 +12,7 @@
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-media": "^1.10.0",
     "react-router-dom": "^6.11.1",
     "react-scripts": "^5.0.1",
     "react-svg": "^16.1.12",
@@ -44,7 +45,7 @@
     ]
   },
   "devDependencies": {
-    "normalize.css": "^8.0.1",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "normalize.css": "^8.0.1"
   }
 }
