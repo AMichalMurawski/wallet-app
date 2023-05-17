@@ -11,10 +11,11 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Navigate to="login" />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="registration" element={<RegistrationPage />} />
       </Route>
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );
 };

@@ -1,0 +1,8 @@
+@use 'src/stylesheet/vars' as *;
+
+.form {
+  width: 100%;
+  max-width: 534px;
+  height: 100%;
+  @include flex-display(column, 40px);
+}
