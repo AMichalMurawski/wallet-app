@@ -1,10 +1,10 @@
 import { IconSVG } from '../../components/icons/IconSVG/IconSVG';
 import { Logo } from '../../components/icons/IconLogo/IconLogo';
 import { mediaQueries } from '../../utils/mediaQueries';
-import scss from './WelcomeLayout.module.scss';
+import scss from './SignLayout.module.scss';
 import Media from 'react-media';
 
-const WelcomeLayout = ({ svgName, Form }) => {
+export const SignLayout = ({ svgName, Form }) => {
   return (
     <>
       <Media queries={mediaQueries}>
@@ -50,5 +50,3 @@ const WelcomeLayout = ({ svgName, Form }) => {
     </>
   );
 };
-
-export default WelcomeLayout;

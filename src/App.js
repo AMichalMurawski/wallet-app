@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { SharedLayout } from './layouts/SharedLayout/SharedLayout';
+import { BackgroundLayout } from './layouts/BackgroundLayout/BackgroundLayout';
 import { lazy } from 'react';
 
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
@@ -10,7 +10,7 @@ const RegistrationPage = lazy(() =>
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
+      <Route path="/" element={<BackgroundLayout />}>
         <Route index element={<Navigate to="login" />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="registration" element={<RegistrationPage />} />
