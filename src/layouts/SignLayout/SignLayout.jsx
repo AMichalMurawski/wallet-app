@@ -13,7 +13,7 @@ export const SignLayout = ({ svgName, Form }) => {
             <div className={scss['desktop-window']}>
               <div className={scss['desktop-icon']}>
                 <div className={scss['desktop-icon__box']}>
-                  <IconSVG name={svgName} width={'435px'} height={'420px'} />
+                  <IconSVG name={svgName} width={'435'} height={'420'} />
                 </div>
               </div>
               <div className={scss['desktop-form']}>
