@@ -35,6 +35,20 @@
     backdrop-filter: blur(25px);
     @include flex-display(column, null, center, flex-start);
     padding-left: 107px;
+
+    &__box {
+      width: 100%;
+      max-width: 534px;
+      border-radius: 20px;
+      background-color: var(--bg-elements);
+      padding: 40px 60px 60px;
+      @include flex-display(column, 60px, null, center);
+    }
+
+    &__logo {
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 
@@ -60,6 +74,11 @@
     width: 100%;
     @include flex-display(column, null, center, center);
   }
+
+  &-logo {
+    @include flex-display(row, 20px, null, center);
+    @include font-type(700, 30px, 1.5);
+  }
 }
 
 .mobile {
@@ -68,9 +87,16 @@
   }
 
   &-form {
-    height: auto;
+    height: 100%;
+    min-height: 100vh;
+    @include flex-display(column, null, center);
     background-color: var(--bg-blur);
     backdrop-filter: blur(25px);
     @include flex-display(column, null, null, center);
+  }
+
+  &-logo {
+    @include flex-display(row, 15px, null, center);
+    @include font-type(700, 20px, 1.5);
   }
 }

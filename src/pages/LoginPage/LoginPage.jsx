@@ -1,9 +1,9 @@
 import { LoginForm } from '../../components/LoginForm/LoginForm';
-import WelcomeLayout from '../../layouts/WelcomeLayout/WelcomeLayout';
+import { SignLayout } from '../../layouts/SignLayout/SignLayout';
 // import scss from './LoginPage.module.scss';
 
 const LoginPage = () => {
-  return <WelcomeLayout svgName="welcome-login" Form={<LoginForm />} />;
+  return <SignLayout svgName="welcome-login" Form={<LoginForm />} />;
 };
 
 export default LoginPage;
