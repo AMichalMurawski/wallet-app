@@ -18,45 +18,69 @@ export const RegistrationForm = () => {
       onSubmit={handleSubmit}
     >
       <Form className={scss.form}>
-        <label>
-          <IconSVG
-            name="email"
-            width="24px"
-            height="24px"
-            fill="--icon-nonactive"
-          />
-          <Field name="email" type="email" placeholder="E-mail" />
-        </label>
-        <label>
-          <IconSVG
-            name="lock"
-            width="24px"
-            height="24px"
-            fill="--icon-nonactive"
-          />
-          <Field name="password" type="password" placeholder="Password" />
-        </label>
-        <label>
-          <IconSVG
-            name="lock"
-            width="24px"
-            height="24px"
-            fill="--icon-nonactive"
-          />
+        <label className={scss.label}>
+          <div className={scss.icon}>
+            <IconSVG
+              name="email"
+              width="24px"
+              height="24px"
+              fill="--icon-nonactive"
+            />
+          </div>
           <Field
+            className={scss.field}
+            name="email"
+            type="email"
+            placeholder="E-mail"
+          />
+        </label>
+        <label className={scss.label}>
+          <div className={scss.icon}>
+            <IconSVG
+              name="lock"
+              width="24px"
+              height="24px"
+              fill="--icon-nonactive"
+            />
+          </div>
+          <Field
+            className={scss.field}
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
+        </label>
+        <label className={scss.label}>
+          <div className={scss.icon}>
+            <IconSVG
+              name="lock"
+              width="24px"
+              height="24px"
+              fill="--icon-nonactive"
+            />
+          </div>
+          <Field
+            className={scss.field}
             name="confirmPassword"
             type="password"
             placeholder="Confirm password"
           />
         </label>
-        <label>
-          <IconSVG
-            name="user"
-            width="24px"
-            height="24px"
-            fill="--icon-nonactive"
+        <label className={scss.label}>
+          <div className={scss.icon}>
+            <IconSVG
+              name="user"
+              width="24px"
+              height="24px"
+              fill="--icon-nonactive"
+            />
+          </div>
+          <Field
+            className={scss.field}
+            name="userName"
+            type="text"
+            placeholder="User name"
           />
-          <Field name="userName" type="text" placeholder="User name" />
         </label>
         <div>
           <button type="submit" disabled={true}>

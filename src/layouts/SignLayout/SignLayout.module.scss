@@ -74,6 +74,11 @@
     width: 100%;
     @include flex-display(column, null, center, center);
   }
+
+  &-logo {
+    @include flex-display(row, 20px, null, center);
+    @include font-type(700, 30px, 1.5);
+  }
 }
 
 .mobile {
@@ -88,5 +93,10 @@
     background-color: var(--bg-blur);
     backdrop-filter: blur(25px);
     @include flex-display(column, null, null, center);
+  }
+
+  &-logo {
+    @include flex-display(row, 15px, null, center);
+    @include font-type(700, 20px, 1.5);
   }
 }

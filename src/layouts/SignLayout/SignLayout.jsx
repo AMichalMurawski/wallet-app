@@ -18,7 +18,10 @@ export const SignLayout = ({ svgName, Form }) => {
               </div>
               <div className={scss['desktop-form']}>
                 <div className={scss['desktop-form__box']}>
-                  <Logo />
+                  <div className={scss['tablet-logo']}>
+                    <Logo />
+                    <p>Wallet</p>
+                  </div>
                   {Form}
                 </div>
               </div>
@@ -30,7 +33,10 @@ export const SignLayout = ({ svgName, Form }) => {
               </div>
               <div className={scss['tablet-form']}>
                 <div className={scss['desktop-form__box']}>
-                  <Logo />
+                  <div className={scss['tablet-logo']}>
+                    <Logo />
+                    <p>Wallet</p>
+                  </div>
                   {Form}
                 </div>
               </div>
@@ -38,8 +44,11 @@ export const SignLayout = ({ svgName, Form }) => {
           ) : (
             <div className={scss['mobile-window']}>
               <div className={scss['mobile-form']}>
-                <div className={scss['desktop-form__box']}>
-                  <Logo />
+                <div className={scss['mobile-form__box']}>
+                  <div className={scss['mobile-logo']}>
+                    <Logo />
+                    <p>Wallet</p>
+                  </div>
                   {Form}
                 </div>
               </div>
