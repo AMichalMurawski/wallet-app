@@ -1,5 +1,5 @@
 import { RegistrationForm } from '../../components/RegistrationForm/RegistrationForm';
-import { SignLayout } from '../../layouts/SignLayout/SignLayout';
+import { SignLayout } from '../../layouts/SignLayout';
 // import scss from './RegistrationPage.module.scss';
 
 const RegistrationPage = () => {

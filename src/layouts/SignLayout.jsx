@@ -1,5 +1,5 @@
-import { IconSVG } from '../../components/IconSVG/IconSVG';
-import { useMediaMui } from '../../hooks';
+import { IconSVG } from '../components/IconSVG/IconSVG';
+import { useMediaMui } from '../hooks';
 import { Box } from '@mui/material';
 
 const cssWindow = mediaMui => {
@@ -148,42 +148,42 @@ export const SignLayout = ({ svgName, Form }) => {
 
   return (
     <Box sx={{ ...cssWindow(mediaMui) }}>
-      {mediaMui.desktop ? (
+      {mediaMui.tablet ? (
         <Box sx={{ ...cssLeftBox(mediaMui) }}>
           <Box sx={{ ...cssIconBox(mediaMui) }}>
-            <IconSVG name={svgName} sx={{ width: '435px', height: '420px' }} />
+            {mediaMui.desktop ? (
+              <IconSVG
+                name={svgName}
+                sx={{ width: '435px', height: '420px' }}
+              />
+            ) : (
+              <IconSVG
+                name={svgName}
+                sx={{ width: '265px', height: '250px' }}
+              />
+            )}
           </Box>
         </Box>
-      ) : mediaMui.tablet ? (
-        <Box sx={{ ...cssIconBox(mediaMui) }}>
-          <IconSVG name={svgName} sx={{ width: '265px', height: '250px' }} />
-        </Box>
       ) : null}
-      {mediaMui.tablet ? (
-        <Box sx={{ ...cssFormBox(mediaMui) }}>
-          <Box sx={{ ...cssFormContainer(mediaMui) }}>
-            <Box sx={{ ...cssFormLogo(mediaMui) }}>
+      <Box sx={{ ...cssFormBox(mediaMui) }}>
+        <Box sx={{ ...cssFormContainer(mediaMui) }}>
+          <Box sx={{ ...cssFormLogo(mediaMui) }}>
+            {mediaMui.tablet ? (
               <IconSVG
                 name="logo"
                 sx={{ color: 'icon.logo', width: '40px', height: '40px' }}
               />
-              <p>Wallet</p>
-            </Box>
-            {Form}
-          </Box>
-        </Box>
-      ) : (
-        <Box sx={{ ...cssFormContainer(mediaMui) }}>
-          <Box sx={{ ...cssFormLogo(mediaMui) }}>
-            <IconSVG
-              name="logo"
-              sx={{ color: 'icon.logo', width: '30px', height: '30px' }}
-            />
+            ) : (
+              <IconSVG
+                name="logo"
+                sx={{ color: 'icon.logo', width: '30px', height: '30px' }}
+              />
+            )}
             <p>Wallet</p>
           </Box>
           {Form}
         </Box>
-      )}
+      </Box>
     </Box>
   );
 };
