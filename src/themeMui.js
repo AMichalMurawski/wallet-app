@@ -4,8 +4,13 @@ export let mode = 'light';
 
 export const theme = createTheme({
   palette: {
+    text: {
+      main: '#fff',
+    },
     background: {
       main: '#e7eaf2',
+      blur: 'rgba(255, 255, 255, 0.4)',
+      elements: '#fff',
     },
     icon: {
       ellipse1: '#c5baff',
