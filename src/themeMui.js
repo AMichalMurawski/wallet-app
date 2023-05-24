@@ -5,7 +5,8 @@ export let mode = 'light';
 export const theme = createTheme({
   palette: {
     text: {
-      main: '#fff',
+      main: '#000',
+      alternative: '#fff',
     },
     background: {
       main: '#e7eaf2',
@@ -18,6 +19,10 @@ export const theme = createTheme({
       ellipse2: '#ffd8d0',
       logo: '#4a56e2',
       nonactive: '#e0e0e0',
+    },
+    button: {
+      main: '#24CCA7',
+      alternative: '#4A56E2',
     },
   },
   zIndex: {

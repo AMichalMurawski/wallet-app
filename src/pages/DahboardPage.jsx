@@ -1,5 +1,3 @@
-// import scss from './DahboardPage.module.scss';
-
 const DahboardPage = () => {
   return (
     <div>

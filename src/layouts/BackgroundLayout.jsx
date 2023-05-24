@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { IconSVG } from '../components/IconSVG/IconSVG';
+import { IconSVG } from '../components/IconSVG';
 import { Box } from '@mui/material';
 import { useMediaMui } from '../hooks';
 

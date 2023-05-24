@@ -1,4 +1,4 @@
-import { IconSVG } from '../components/IconSVG/IconSVG';
+import { IconSVG } from '../components/IconSVG';
 import { useMediaMui } from '../hooks';
 import { Box } from '@mui/material';
 
