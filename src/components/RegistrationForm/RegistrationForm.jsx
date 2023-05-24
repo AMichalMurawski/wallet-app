@@ -1,4 +1,4 @@
-import { IconSVG } from '../icons/IconSVG/IconSVG';
+import { IconSVG } from '../IconSVG/IconSVG';
 import scss from './RegistrationForm.module.scss';
 import { Field, Form, Formik } from 'formik';
 

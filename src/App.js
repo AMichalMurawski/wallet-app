@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { BackgroundLayout } from './layouts/BackgroundLayout/BackgroundLayout';
+import { BackgroundLayout } from './layouts/BackgroundLayout';
 import { lazy } from 'react';
 
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
