@@ -2,17 +2,25 @@ import { Box, Button, TextField } from '@mui/material';
 import { IconSVG } from './IconSVG';
 import { useFormik } from 'formik';
 import { useMediaMui } from '../hooks';
+import { SignupSchema } from '../utils/validationSchema';
 
-const cssTextField = ({ name, type, placeholder, svgName, formik }) => {
+const cssTextField = ({
+  name,
+  type,
+  placeholder,
+  svgName,
+  formik,
+  handleChange,
+}) => {
   return {
     fullWidth: true,
     id: name,
-    name: name,
-    type: type,
+    name,
+    type,
     variant: 'standard',
     value: formik.values[name],
-    onChange: formik.handleChange,
-    placeholder: placeholder,
+    onChange: handleChange,
+    placeholder,
     sx: {
       height: '32px',
       maxHeight: '32px',
@@ -70,8 +78,14 @@ export const RegistrationForm = () => {
       password: '',
       confirmPassword: '',
     },
+    validationSchema: SignupSchema,
     onSubmit: e => handleSubmit(e),
   });
+
+  const handleChange = e => {
+    formik.handleChange(e);
+    formik.touched[e.target.name] = true;
+  };
 
   return (
     <Box
@@ -92,8 +106,11 @@ export const RegistrationForm = () => {
           type: 'email',
           placeholder: 'Email',
           svgName: 'email',
-          formik: formik,
+          formik,
+          handleChange,
         })}
+        error={formik.touched.email && Boolean(formik.errors.email)}
+        helperText={formik.touched.email && formik.errors.email}
       />
       <TextField
         {...cssTextField({
@@ -101,8 +118,11 @@ export const RegistrationForm = () => {
           type: 'password',
           placeholder: 'Password',
           svgName: 'lock',
-          formik: formik,
+          formik,
+          handleChange,
         })}
+        error={formik.touched.password && Boolean(formik.errors.password)}
+        helperText={formik.touched.password && formik.errors.password}
       />
       <TextField
         {...cssTextField({
@@ -110,8 +130,16 @@ export const RegistrationForm = () => {
           type: 'password',
           placeholder: 'Confirm password',
           svgName: 'lock',
-          formik: formik,
+          formik,
+          handleChange,
         })}
+        error={
+          formik.touched.confirmPassword &&
+          Boolean(formik.errors.confirmPassword)
+        }
+        helperText={
+          formik.touched.confirmPassword && formik.errors.confirmPassword
+        }
       />
 
       <TextField
@@ -120,12 +148,15 @@ export const RegistrationForm = () => {
           type: 'text',
           placeholder: 'User name',
           svgName: 'user',
-          formik: formik,
+          formik,
+          handleChange,
         })}
+        error={formik.touched.userName && Boolean(formik.errors.userName)}
+        helperText={formik.touched.userName && formik.errors.userName}
       />
 
       <Box
-        container
+        container="true"
         sx={{
           display: 'flex',
           flexDirection: 'column',

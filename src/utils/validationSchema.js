@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
 
-const SigninSchema = Yup.object().shape({
-  email: string().email().required('Email required'),
-  password: string()
+const SigninSchema = Yup.object({
+  email: Yup.string().email().required('Email required'),
+  password: Yup.string()
     .required('Password required')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$/,
@@ -10,31 +10,32 @@ const SigninSchema = Yup.object().shape({
     ),
 });
 
-const SingupSchema = SingupSchema.concat(
-  Yup.object().shape({
-    userName: string()
-      .required()
-      .matches(/^[a-zA-Z0-9]{3,12}$/),
+const SignupSchema = SigninSchema.concat(
+  Yup.object({
+    userName: Yup.string()
+      .required('User name required')
+      .matches(
+        /^[a-zA-Z0-9]{3,12}$/,
+        "Must containe 3-12 alphanumeric's characters"
+      ),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required('Confirm password required'),
   })
 );
 
 const TransactionSchema = Yup.object().shape({
-  date: date().max(new Date()).required(),
-  type: mixed().oneOf(['expense', 'income']).required(),
-  categoryId: number().required(),
-  comment: string(),
-  sum: number().required,
+  date: Yup.date().max(new Date()).required(),
+  type: Yup.mixed().oneOf(['expense', 'income']).required(),
+  categoryId: Yup.number().required(),
+  comment: Yup.string(),
+  sum: Yup.number().required,
 });
 
 const TransactionIdSchema = TransactionSchema.concat(
   Yup.object().shape({
-    id: string().required(),
+    id: Yup.string().required(),
   })
 );
 
-export default {
-  SingupSchema,
-  SigninSchema,
-  TransactionSchema,
-  TransactionIdSchema,
-};
+export { SignupSchema, SigninSchema, TransactionSchema, TransactionIdSchema };
