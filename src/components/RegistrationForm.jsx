@@ -68,7 +68,15 @@ export const RegistrationForm = () => {
   const mediaMui = useMediaMui();
 
   const handleSubmit = e => {
-    console.log(e);
+    const { email, password, userName } = e;
+    console.log(
+      'ToDo: Send registration data to API. Email: ' +
+        email +
+        ' / Password: ' +
+        password +
+        ' / User name: ' +
+        userName
+    );
   };
 
   const formik = useFormik({
