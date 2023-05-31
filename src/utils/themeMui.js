@@ -19,6 +19,7 @@ export const theme = createTheme({
       ellipse2: '#ffd8d0',
       logo: '#4a56e2',
       nonactive: '#e0e0e0',
+      active: '#000',
     },
     button: {
       main: '#24CCA7',

@@ -1,40 +1,29 @@
 import { Box, Button, TextField } from '@mui/material';
-import { IconSVG } from './IconSVG';
 import { useFormik } from 'formik';
 import { useMediaMui } from '../hooks';
 import { SignupSchema } from '../utils/validationSchema';
+import LockIcon from '@mui/icons-material/Lock';
+import EmailIcon from '@mui/icons-material/Email';
+import PersonIcon from '@mui/icons-material/Person';
+import { useState } from 'react';
 
-const cssTextField = ({
-  name,
-  type,
-  placeholder,
-  svgName,
-  formik,
-  handleChange,
-}) => {
+const cssTextField = ({ Icon, formik, focus }) => {
   return {
     fullWidth: true,
-    id: name,
-    name,
-    type,
     variant: 'standard',
-    value: formik.values[name],
-    onChange: handleChange,
-    placeholder,
+    onChange: formik.handleChange,
     sx: {
       height: '32px',
       maxHeight: '32px',
     },
     InputProps: {
       startAdornment: (
-        <IconSVG
-          name={svgName}
+        <Icon
           sx={{
-            color: 'icon.nonactive',
+            color: focus ? 'icon.active' : 'icon.nonactive',
             width: '24px',
             height: '24px',
-            marginLeft: '12.5px',
-            marginRight: '20px',
+            marginInline: '12.5px',
           }}
         />
       ),
@@ -64,8 +53,40 @@ const cssButton = type => {
   };
 };
 
+const initialFocus = {
+  email: false,
+  password: false,
+  confirmPassword: false,
+  userName: false,
+};
+
 export const RegistrationForm = () => {
   const mediaMui = useMediaMui();
+  const [focus, setFocus] = useState(initialFocus);
+
+  const handleBlur = e => {
+    formik.handleBlur(e);
+    setFocus(initialFocus);
+  };
+
+  const handleFocus = e => {
+    switch (e.target.name) {
+      case 'email':
+        setFocus({ ...initialFocus, email: true });
+        break;
+      case 'password':
+        setFocus({ ...initialFocus, password: true });
+        break;
+      case 'confirmPassword':
+        setFocus({ ...initialFocus, confirmPassword: true });
+        break;
+      case 'userName':
+        setFocus({ ...initialFocus, userName: true });
+        break;
+      default:
+        console.log('wrong focus switch');
+    }
+  };
 
   const handleSubmit = e => {
     const { email, password, userName } = e;
@@ -90,11 +111,6 @@ export const RegistrationForm = () => {
     onSubmit: e => handleSubmit(e),
   });
 
-  const handleChange = e => {
-    formik.handleChange(e);
-    formik.touched[e.target.name] = true;
-  };
-
   return (
     <Box
       component="form"
@@ -109,37 +125,47 @@ export const RegistrationForm = () => {
       onSubmit={formik.handleSubmit}
     >
       <TextField
+        id="email"
+        name="email"
+        type="email"
+        placeholder="Email"
+        value={formik.values.email}
         {...cssTextField({
-          name: 'email',
-          type: 'email',
-          placeholder: 'Email',
-          svgName: 'email',
+          Icon: EmailIcon,
           formik,
-          handleChange,
+          focus: focus.email,
         })}
         error={formik.touched.email && Boolean(formik.errors.email)}
         helperText={formik.touched.email && formik.errors.email}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
       />
       <TextField
+        id="password"
+        name="password"
+        type="password"
+        placeholder="Password"
+        value={formik.values.password}
         {...cssTextField({
-          name: 'password',
-          type: 'password',
-          placeholder: 'Password',
-          svgName: 'lock',
+          Icon: LockIcon,
           formik,
-          handleChange,
+          focus: focus.password,
         })}
         error={formik.touched.password && Boolean(formik.errors.password)}
         helperText={formik.touched.password && formik.errors.password}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
       />
       <TextField
+        id="confirmPassword"
+        name="confirmPassword"
+        type="password"
+        placeholder="Confirm password"
+        value={formik.values.confirmPassword}
         {...cssTextField({
-          name: 'confirmPassword',
-          type: 'password',
-          placeholder: 'Confirm password',
-          svgName: 'lock',
+          Icon: LockIcon,
           formik,
-          handleChange,
+          focus: focus.confirmPassword,
         })}
         error={
           formik.touched.confirmPassword &&
@@ -148,21 +174,25 @@ export const RegistrationForm = () => {
         helperText={
           formik.touched.confirmPassword && formik.errors.confirmPassword
         }
+        onBlur={handleBlur}
+        onFocus={handleFocus}
       />
-
       <TextField
+        id="userName"
+        name="userName"
+        type="text"
+        placeholder="User name"
+        value={formik.values.userName}
         {...cssTextField({
-          name: 'userName',
-          type: 'text',
-          placeholder: 'User name',
-          svgName: 'user',
+          Icon: PersonIcon,
           formik,
-          handleChange,
+          focus: focus.userName,
         })}
         error={formik.touched.userName && Boolean(formik.errors.userName)}
         helperText={formik.touched.userName && formik.errors.userName}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
       />
-
       <Box
         container="true"
         sx={{
