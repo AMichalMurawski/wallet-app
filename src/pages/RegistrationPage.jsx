@@ -1,5 +1,5 @@
-import { RegistrationForm } from '../components/RegistrationForm';
-import { SignLayout } from '../layouts/SignLayout';
+import { RegistrationForm } from '../components';
+import { SignLayout } from '../layouts';
 
 const RegistrationPage = () => {
   return (
