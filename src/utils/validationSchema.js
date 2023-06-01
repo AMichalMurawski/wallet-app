@@ -6,7 +6,7 @@ const SigninSchema = Yup.object({
     .required('Password required')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$/,
-      'Must contain 6-12 characters in this at least one upercase, one lowercase, one number and one special case character (@$!%*?&)'
+      '6-12 characters with at least one upercase, lowercase, number and special case character (@$!%*?&)'
     ),
 });
 

@@ -18,12 +18,14 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-media": "^1.10.0",
+    "react-password-strength-bar": "^0.4.1",
     "react-router-dom": "^6.11.1",
     "react-scripts": "^5.0.1",
     "react-svg": "^16.1.12",
     "sass": "^1.62.1",
     "web-vitals": "^2.1.4",
-    "yup": "^1.1.1"
+    "yup": "^1.1.1",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",

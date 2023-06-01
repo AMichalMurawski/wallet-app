@@ -6,6 +6,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
 import { SignTextField, SignButton } from './utils';
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 export const RegistrationForm = () => {
   const mediaMui = useMediaMui();
@@ -60,10 +61,22 @@ export const RegistrationForm = () => {
         placeholder="Password"
         formik={formik}
         Icon={LockIcon}
+        children={
+          <PasswordStrengthBar
+            password={formik.values.password}
+            style={{
+              display: formik.values.password.length < 4 ? 'none' : 'block',
+              position: 'absolute',
+              width: '100%',
+              top: '24.5px',
+              backgroundColor: 'transparent',
+            }}
+          />
+        }
       />
       <SignTextField
         name="confirmPassword"
-        type="confirmPassword"
+        type="password"
         placeholder="Confirm password"
         formik={formik}
         Icon={LockIcon}
