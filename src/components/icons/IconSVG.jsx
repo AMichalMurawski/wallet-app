@@ -1,4 +1,4 @@
-import sprite from '../images/icons.svg';
+import sprite from '../../images/icons.svg';
 import { SvgIcon } from '@mui/material';
 
 const numberFromDim = dim => {

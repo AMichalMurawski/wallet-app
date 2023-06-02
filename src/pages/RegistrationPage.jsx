@@ -1,4 +1,4 @@
-import { RegistrationForm } from '../components';
+import { RegistrationForm } from '../components/forms';
 import { SignLayout } from '../layouts';
 
 const RegistrationPage = () => {

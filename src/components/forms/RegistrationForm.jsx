@@ -1,11 +1,11 @@
 import { Box } from '@mui/material';
 import { useFormik } from 'formik';
-import { useMediaMui } from '../hooks';
-import { SignupSchema } from '../utils/validationSchema';
+import { useMediaMui } from '../../hooks';
+import { SignupSchema } from '../../utils/validationSchema';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
-import { SignTextField, SignButton } from './utils';
+import { SignTextField, SignButton } from '../utils';
 import PasswordStrengthBar from 'react-password-strength-bar';
 
 export const RegistrationForm = () => {

@@ -1,10 +1,10 @@
 import { Box } from '@mui/material';
 import { useFormik } from 'formik';
-import { useMediaMui } from '../hooks';
-import { SigninSchema } from '../utils/validationSchema';
+import { useMediaMui } from '../../hooks';
+import { SigninSchema } from '../../utils/validationSchema';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
-import { SignTextField, SignButton } from './utils';
+import { SignTextField, SignButton } from '../utils';
 
 export const LoginForm = () => {
   const mediaMui = useMediaMui();

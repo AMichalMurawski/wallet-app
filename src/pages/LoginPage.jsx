@@ -1,4 +1,4 @@
-import { LoginForm } from '../components';
+import { LoginForm } from '../components/forms';
 import { SignLayout } from '../layouts';
 
 const LoginPage = () => {
