@@ -1,11 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { BackgroundLayout } from './layouts/BackgroundLayout/BackgroundLayout';
+import { BackgroundLayout } from './layouts/BackgroundLayout';
 import { lazy } from 'react';
 
-const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
-const RegistrationPage = lazy(() =>
-  import('./pages/RegistrationPage/RegistrationPage')
-);
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 
 const App = () => {
   return (
