@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import { createRef, useState } from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -39,7 +39,7 @@ export const SignTextField = ({
         type={type !== 'password' ? type : !passwordShow ? 'password' : 'text'}
         placeholder={placeholder}
         value={formik.values[name]}
-        fullWidth="true"
+        fullWidth={true}
         variant="standard"
         onChange={formik.handleChange}
         sx={{

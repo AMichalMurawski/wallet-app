@@ -1,8 +1,11 @@
+import { Box } from '@mui/material';
+import { Home } from '../components/dashboardComponents';
+
 const DahboardPage = () => {
   return (
-    <div>
-      <p>Dashboard Page</p>
-    </div>
+    <Box>
+      <Home></Home>
+    </Box>
   );
 };
 

@@ -1,4 +1,4 @@
-import { IconSVG } from '../components/icons/IconSVG';
+import { IconSVG, IconLogo } from '../components/icons';
 import { useMediaMui } from '../hooks';
 import { Box } from '@mui/material';
 
@@ -123,26 +123,6 @@ const cssFormContainer = mediaMui => {
   };
 };
 
-const cssFormLogo = mediaMui => {
-  const css = mediaMui.tablet
-    ? {
-        gap: '20px',
-        fontSize: '30px',
-      }
-    : {
-        gap: '15px',
-        fontSize: '20px',
-      };
-  return {
-    ...css,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    fontWeight: '700',
-    lineHeight: '1.5',
-  };
-};
-
 export const SignLayout = ({ svgName, Form }) => {
   const mediaMui = useMediaMui();
 
@@ -167,20 +147,7 @@ export const SignLayout = ({ svgName, Form }) => {
       ) : null}
       <Box sx={{ ...cssFormBox(mediaMui) }}>
         <Box sx={{ ...cssFormContainer(mediaMui) }}>
-          <Box sx={{ ...cssFormLogo(mediaMui) }}>
-            {mediaMui.tablet ? (
-              <IconSVG
-                name="logo"
-                sx={{ color: 'icon.logo', width: '40px', height: '40px' }}
-              />
-            ) : (
-              <IconSVG
-                name="logo"
-                sx={{ color: 'icon.logo', width: '30px', height: '30px' }}
-              />
-            )}
-            <p>Wallet</p>
-          </Box>
+          <IconLogo />
           {Form}
         </Box>
       </Box>

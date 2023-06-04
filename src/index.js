@@ -10,7 +10,7 @@ import { theme } from './utils/themeMui';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="wallet">
+    <BrowserRouter basename="/wallet/">
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <App />
