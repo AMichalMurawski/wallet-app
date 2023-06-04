@@ -1,11 +1,12 @@
-import { AppBar, Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { IconLogo } from '../icons';
 
-export const Home = () => {
+export const Header = () => {
   return (
-    <AppBar
+    <Box
       sx={{
         backgroundColor: 'background.elements',
+        display: 'block',
       }}
     >
       <Container
@@ -24,6 +25,6 @@ export const Home = () => {
           <Typography sx={{ color: 'text.main' }}>Name | Exit</Typography>
         </Box>
       </Container>
-    </AppBar>
+    </Box>
   );
 };
