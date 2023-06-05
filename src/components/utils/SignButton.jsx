@@ -1,4 +1,20 @@
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+const styleButton = ({ type, linkTo }) => {
+  const style =
+    type === 'link'
+      ? {
+          component: Link,
+          to: linkTo,
+        }
+      : type === 'submit'
+      ? {
+          type: 'submit',
+        }
+      : null;
+  return { style };
+};
 
 const cssButton = type => {
   const css =
@@ -22,9 +38,14 @@ const cssButton = type => {
   };
 };
 
-export const SignButton = ({ type, text }) => {
+export const SignButton = ({ type, linkTo, text }) => {
   return (
-    <Button type={type === 'submit' ? 'submit' : 'button'} sx={cssButton(type)}>
+    <Button
+      type={type === 'link' ? null : type === 'submit' ? 'sumbit' : 'button'}
+      component={type === 'link' ? Link : null}
+      to={type === 'link' ? linkTo : null}
+      sx={cssButton(type)}
+    >
       {text}
     </Button>
   );

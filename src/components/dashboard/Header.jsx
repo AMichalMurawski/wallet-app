@@ -1,11 +1,35 @@
-import { Box, Container, Typography } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  Container,
+  Menu,
+  MenuItem,
+  Typography,
+} from '@mui/material';
 import { IconLogo } from '../icons';
+import { useGlobal } from '../../hooks';
+import { useDispatch } from 'react-redux';
+import { setModalProfileOpen } from '../../redux/global/globalThunk';
+import { useState } from 'react';
 
 export const Header = () => {
+  const { isModalProfileOpen } = useGlobal();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const dispatch = useDispatch();
+
+  const handleOpen = async e => {
+    setAnchorEl(e.currentTarget);
+    dispatch(setModalProfileOpen(true));
+  };
+
+  const handleClose = async () => {
+    dispatch(setModalProfileOpen(false));
+  };
+
   return (
     <Box
       sx={{
-        backgroundColor: 'background.elements',
+        backgroundColor: 'background.category',
         display: 'block',
       }}
     >
@@ -21,9 +45,59 @@ export const Header = () => {
         }}
       >
         <IconLogo />
-        <Box>
-          <Typography sx={{ color: 'text.main' }}>Name | Exit</Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={handleOpen}
+        >
+          <Typography sx={{ color: 'text.main', fontSize: '18px' }}>
+            {isModalProfileOpen.toString()}
+          </Typography>
+          <Avatar
+            sx={{
+              color: 'text.main',
+              width: '24px',
+              height: '24px',
+            }}
+          >
+            {isModalProfileOpen.toString().slice(0, 1)}
+          </Avatar>
         </Box>
+        <Menu
+          anchorEl={anchorEl}
+          open={isModalProfileOpen}
+          onClose={handleClose}
+          onClick={handleClose}
+          PaperProps={{
+            elevation: 0,
+            sx: {
+              overflow: 'visible',
+              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+              mt: 1.5,
+              '&:before': {
+                content: '""',
+                display: 'block',
+                position: 'absolute',
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgcolor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
+              },
+            },
+          }}
+          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        >
+          <MenuItem>Profile</MenuItem>
+          <MenuItem>Wallets</MenuItem>
+          <MenuItem>Log out</MenuItem>
+        </Menu>
       </Container>
     </Box>
   );

@@ -107,7 +107,7 @@ const cssFormContainer = mediaMui => {
     ? {
         width: '533px',
         padding: '40px 60px 60px',
-        backgroundColor: 'background.elements',
+        backgroundColor: 'background.category',
         borderRadius: '20px',
       }
     : {

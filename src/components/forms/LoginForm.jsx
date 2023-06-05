@@ -66,7 +66,7 @@ export const LoginForm = () => {
         }}
       >
         <SignButton type="submit" text="Log in" />
-        <SignButton type="button" text="Register" />
+        <SignButton type="link" linkTo="/registration" text="Register" />
       </Box>
     </Box>
   );

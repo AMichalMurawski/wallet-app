@@ -12,7 +12,8 @@ export const theme = createTheme({
       main: '#e7eaf2',
       alternative: '#fff',
       blur: 'rgba(255, 255, 255, 0.4)',
-      elements: '#fff',
+      category: '#fff',
+      box: '#4A56E2',
     },
     icon: {
       ellipse1: '#c5baff',

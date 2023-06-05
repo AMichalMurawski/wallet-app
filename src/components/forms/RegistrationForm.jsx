@@ -98,7 +98,7 @@ export const RegistrationForm = () => {
         }}
       >
         <SignButton type="submit" text="Register" />
-        <SignButton type="button" text="Log in" />
+        <SignButton type="link" linkTo="/login" text="Log in" />
       </Box>
     </Box>
   );
