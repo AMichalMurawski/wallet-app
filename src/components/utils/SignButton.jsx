@@ -1,21 +1,6 @@
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const styleButton = ({ type, linkTo }) => {
-  const style =
-    type === 'link'
-      ? {
-          component: Link,
-          to: linkTo,
-        }
-      : type === 'submit'
-      ? {
-          type: 'submit',
-        }
-      : null;
-  return { style };
-};
-
 const cssButton = type => {
   const css =
     type === 'submit'

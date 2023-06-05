@@ -11,6 +11,7 @@ import { useGlobal } from '../../hooks';
 import { useDispatch } from 'react-redux';
 import { setModalProfileOpen } from '../../redux/global/globalThunk';
 import { useState } from 'react';
+import { toDoAlert } from '../../devUtils/toDoAlert';
 
 export const Header = () => {
   const { isModalProfileOpen } = useGlobal();
@@ -19,11 +20,30 @@ export const Header = () => {
 
   const handleOpen = async e => {
     setAnchorEl(e.currentTarget);
+    console.log(e.currentTarget);
     dispatch(setModalProfileOpen(true));
   };
 
   const handleClose = async () => {
     dispatch(setModalProfileOpen(false));
+  };
+
+  const handleLogout = () => {
+    toDoAlert(['Log out user', 'Use ModalYesNo to check if user want log out']);
+  };
+
+  const handleProfileRoute = () => {
+    toDoAlert([
+      'Navigate to /settings/profile',
+      'where settings is layout and profile is tab',
+    ]);
+  };
+
+  const handleWalletsRoute = () => {
+    toDoAlert([
+      'Navigate to /settings/wallets',
+      'where settings is layout and wallets is tab',
+    ]);
   };
 
   return (
@@ -94,9 +114,9 @@ export const Header = () => {
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         >
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Wallets</MenuItem>
-          <MenuItem>Log out</MenuItem>
+          <MenuItem onClick={handleProfileRoute}>Profile</MenuItem>
+          <MenuItem onClick={handleWalletsRoute}>Wallets</MenuItem>
+          <MenuItem onClick={handleLogout}>Log out</MenuItem>
         </Menu>
       </Container>
     </Box>
