@@ -48,6 +48,7 @@ export const Header = () => {
 
   return (
     <Box
+      component="header"
       sx={{
         backgroundColor: 'background.category',
         display: 'block',

@@ -1,30 +1,23 @@
 import { Box } from '@mui/material';
 import { Header } from '../components/dashboard';
 import { useMediaMui } from '../hooks';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { Suspense } from 'react';
 import { Navigation } from '../components/dashboard/Navigation';
-
-const HomeTab = lazy(() => import('../components/dashboard/home/HomeTab'));
-const DiagramTab = lazy(() =>
-  import('../components/dashboard/diagram/DiagramTab')
-);
+import { Outlet } from 'react-router-dom/dist';
 
 const DahboardPage = () => {
   const mediaMui = useMediaMui();
 
   return (
-    <Box sx={{ minHeight: '100%', height: '100%' }}>
+    <Box>
       <Header />
       <Box
         sx={{
           width: '100%',
           maxWidth: '1280px',
           minWidth: '320px',
-          height: '100%',
-          minHeight: '100%',
-          backgroundColor: 'gray',
           margin: '0 auto',
+          padding: '40px 16px',
           display: 'flex',
           flexDirection: mediaMui.desktop ? 'row-reverse' : 'column-reverse',
           justifyContent: 'space-between',
@@ -32,18 +25,11 @@ const DahboardPage = () => {
         }}
       >
         <Box component="main">
-          <Routes>
-            <Route path="home" element={<HomeTab />} />
-            <Route path="diagram" element={<DiagramTab />} />
-            <Route path="*" element={<Navigate to="home" />} />
-          </Routes>
+          <Suspense>
+            <Outlet />
+          </Suspense>
         </Box>
-        <Box
-          component="aside"
-          sx={{
-            padding: '40px 16px',
-          }}
-        >
+        <Box component="aside">
           <Navigation />
         </Box>
       </Box>
