@@ -5,22 +5,22 @@ import { SignupSchema } from '../../utils/validationSchema';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
-import { SignTextField, SignButton } from '../utils';
+import { FormTextField } from '../formElements';
 import PasswordStrengthBar from 'react-password-strength-bar';
+import { SubmitButton, NavButton } from '../buttons';
+import { basePath, toDoAlert } from '../../devUtils';
 
 export const RegistrationForm = () => {
   const mediaMui = useMediaMui();
 
   const handleSubmit = e => {
     const { email, password, userName } = e;
-    window.alert(
-      'ToDo: Send registration data to API. Email: ' +
-        email +
-        ' / Password: ' +
-        password +
-        ' / User name: ' +
-        userName
-    );
+    toDoAlert([
+      'Send registration data to API.',
+      'Email:' + email,
+      'Password: ' + password,
+      'User name: ' + userName,
+    ]);
     formik.resetForm();
   };
 
@@ -48,14 +48,14 @@ export const RegistrationForm = () => {
       }}
       onSubmit={formik.handleSubmit}
     >
-      <SignTextField
+      <FormTextField
         name="email"
         type="email"
         placeholder="Email"
         formik={formik}
         Icon={EmailIcon}
       />
-      <SignTextField
+      <FormTextField
         name="password"
         type="password"
         placeholder="Password"
@@ -74,14 +74,14 @@ export const RegistrationForm = () => {
           />
         }
       />
-      <SignTextField
+      <FormTextField
         name="confirmPassword"
         type="password"
         placeholder="Confirm password"
         formik={formik}
         Icon={LockIcon}
       />
-      <SignTextField
+      <FormTextField
         name="userName"
         type="text"
         placeholder="User name"
@@ -97,8 +97,8 @@ export const RegistrationForm = () => {
           alignItems: 'center',
         }}
       >
-        <SignButton type="submit" text="Register" />
-        <SignButton type="link" linkTo="/login" text="Log in" />
+        <SubmitButton text="Register" />
+        <NavButton text="Log in" linkTo={basePath + '/login'} />
       </Box>
     </Box>
   );

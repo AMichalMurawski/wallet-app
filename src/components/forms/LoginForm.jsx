@@ -4,19 +4,20 @@ import { useMediaMui } from '../../hooks';
 import { SigninSchema } from '../../utils/validationSchema';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
-import { SignTextField, SignButton } from '../utils';
+import { FormTextField } from '../formElements';
+import { SubmitButton, NavButton } from '../buttons';
+import { basePath, toDoAlert } from '../../devUtils';
 
 export const LoginForm = () => {
   const mediaMui = useMediaMui();
 
   const handleSubmit = e => {
     const { email, password } = e;
-    window.alert(
-      'ToDo: Send login data to API. Email: ' +
-        email +
-        ' / Password: ' +
-        password
-    );
+    toDoAlert([
+      'ToDo: Send login data to API.',
+      'Email: ' + email,
+      'Password: ' + password,
+    ]);
     formik.resetForm();
   };
 
@@ -42,14 +43,14 @@ export const LoginForm = () => {
       }}
       onSubmit={formik.handleSubmit}
     >
-      <SignTextField
+      <FormTextField
         name="email"
         type="email"
         placeholder="Email"
         formik={formik}
         Icon={EmailIcon}
       />
-      <SignTextField
+      <FormTextField
         name="password"
         type="password"
         placeholder="Password"
@@ -65,8 +66,8 @@ export const LoginForm = () => {
           alignItems: 'center',
         }}
       >
-        <SignButton type="submit" text="Log in" />
-        <SignButton type="link" linkTo="/registration" text="Register" />
+        <SubmitButton text="Log in" />
+        <NavButton linkTo={basePath + '/registration'} text="Register" />
       </Box>
     </Box>
   );

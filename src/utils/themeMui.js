@@ -7,6 +7,7 @@ export const theme = createTheme({
     text: {
       main: '#000',
       alternative: '#fff',
+      light: '#A6A6A6',
     },
     background: {
       main: '#e7eaf2',
@@ -14,6 +15,7 @@ export const theme = createTheme({
       blur: 'rgba(255, 255, 255, 0.4)',
       category: '#fff',
       box: '#4A56E2',
+      box_nonactive: '#6E78E8',
     },
     icon: {
       ellipse1: '#c5baff',

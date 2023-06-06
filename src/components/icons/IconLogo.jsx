@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import { useMediaMui } from '../../hooks';
 import { IconSVG } from './IconSVG';
 
@@ -6,7 +6,8 @@ export const IconLogo = () => {
   const mediaMui = useMediaMui();
 
   return (
-    <Box
+    <Link
+      underline="none"
       sx={{
         display: 'flex',
         flexDirection: 'row',
@@ -15,6 +16,7 @@ export const IconLogo = () => {
         fontWeight: '700',
         lineHeight: '1.5',
       }}
+      href="/wallet"
     >
       <IconSVG
         name="logo"
@@ -32,6 +34,6 @@ export const IconLogo = () => {
       >
         Wallet
       </Typography>
-    </Box>
+    </Link>
   );
 };

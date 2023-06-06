@@ -1,8 +1,7 @@
 import { Box } from '@mui/material';
-import { Header } from '../components/dashboard';
+import { Header, Navigation, Balance, Currency } from '../components/dashboard';
 import { useMediaMui } from '../hooks';
 import { Suspense } from 'react';
-import { Navigation } from '../components/dashboard/Navigation';
 import { Outlet } from 'react-router-dom/dist';
 
 const DahboardPage = () => {
@@ -29,8 +28,42 @@ const DahboardPage = () => {
             <Outlet />
           </Suspense>
         </Box>
-        <Box component="aside">
-          <Navigation />
+        <Box
+          component="aside"
+          sx={{
+            width: '100%',
+            display: mediaMui.tablet ? 'flex' : null,
+            flexWrap: mediaMui.tablet && !mediaMui.desktop && 'wrap',
+            flexDirection: mediaMui.desktop ? 'column' : null,
+            gap: mediaMui.tablet ? '30px' : null,
+          }}
+        >
+          <Box
+            sx={{
+              flexBasis:
+                mediaMui.tablet &&
+                !mediaMui.desktop &&
+                'calc((100% - 30px) / 2)',
+              display: 'flex',
+              flexDirection: 'column',
+              width: '100%',
+              alignItems: !mediaMui.tablet ? 'center' : null,
+              gap: '30px',
+            }}
+          >
+            <Navigation />
+            <Balance />
+          </Box>
+          <Box
+            sx={{
+              flexBasis:
+                mediaMui.tablet &&
+                !mediaMui.desktop &&
+                'calc((100% - 30px) / 2)',
+            }}
+          >
+            <Currency />
+          </Box>
         </Box>
       </Box>
     </Box>
