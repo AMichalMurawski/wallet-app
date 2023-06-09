@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { useMediaMui } from '../../hooks';
 import { currencyData } from '../../devUtils';
+import { IconSVG } from '../icons/IconSVG';
 
 const columns = currencyData => {
   const data = currencyData[0];
@@ -36,6 +37,9 @@ export const Currency = () => {
           : '280px',
         overflow: 'hidden',
         position: 'relative',
+        overflow: 'hidden',
+        backgroundColor: '#F0F8FF',
+        borderRadius: '30px',
       }}
     >
       <Box
@@ -48,38 +52,14 @@ export const Currency = () => {
           zIndex: -1,
         }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 300 300"
-          width="100%"
-          height="100%"
-        >
-          <polyline
-            points="50,250 150,150 200,200 300,100"
-            fill="none"
-            stroke="lightblue"
-            strokeWidth="2%"
-            markerEnd="url(#blue-arrow)"
-          />
-
-          <defs>
-            <marker
-              id="blue-arrow"
-              viewBox="0 0 10 10"
-              refX="8"
-              refY="5"
-              markerWidth="6"
-              markerHeight="6"
-              orient="auto"
-            >
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="lightblue" />
-            </marker>
-          </defs>
-        </svg>
+        <IconSVG
+          name="diagram"
+          sx={{ width: '100%', height: '100%' }}
+        ></IconSVG>
       </Box>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader>
-          <TableHead>
+          <TableHead sx={{ backgroundColor: '#E1EBEE' }}>
             <TableRow>
               {columns(currencyData).map(column => (
                 <TableCell
