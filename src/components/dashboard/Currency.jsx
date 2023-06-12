@@ -12,8 +12,8 @@ import { useMediaMui } from '../../hooks';
 import { currencyData } from '../../devUtils';
 import { IconSVG } from '../icons/IconSVG';
 
-const columns = currencyData => {
-  const data = currencyData[0];
+const columns = tableData => {
+  const data = tableData[0];
   const col = [];
   for (const key in data) {
     const id = key;

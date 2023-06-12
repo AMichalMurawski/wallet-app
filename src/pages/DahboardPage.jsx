@@ -12,7 +12,7 @@ const DahboardPage = () => {
       <Header />
       <Box
         sx={{
-          width: '100%',
+          width: 1,
           maxWidth: '1280px',
           minWidth: '320px',
           margin: '0 auto',
@@ -31,7 +31,7 @@ const DahboardPage = () => {
         <Box
           component="aside"
           sx={{
-            width: '100%',
+            width: 1,
             display: mediaMui.tablet ? 'flex' : null,
             flexWrap: mediaMui.tablet && !mediaMui.desktop && 'wrap',
             flexDirection: mediaMui.desktop ? 'column' : null,
