@@ -23,7 +23,7 @@ const DahboardPage = () => {
           alignItems: 'flex-start',
         }}
       >
-        <Box component="main">
+        <Box component="main" sx={{ width: 1 }}>
           <Suspense>
             <Outlet />
           </Suspense>
@@ -52,18 +52,20 @@ const DahboardPage = () => {
             }}
           >
             <Navigation />
-            <Balance />
+            {mediaMui.tablet ? <Balance /> : null}
           </Box>
-          <Box
-            sx={{
-              flexBasis:
-                mediaMui.tablet &&
-                !mediaMui.desktop &&
-                'calc((100% - 30px) / 2)',
-            }}
-          >
-            <Currency />
-          </Box>
+          {mediaMui.tablet ? (
+            <Box
+              sx={{
+                flexBasis:
+                  mediaMui.tablet &&
+                  !mediaMui.desktop &&
+                  'calc((100% - 30px) / 2)',
+              }}
+            >
+              <Currency />
+            </Box>
+          ) : null}
         </Box>
       </Box>
     </Box>

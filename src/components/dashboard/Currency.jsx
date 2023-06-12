@@ -29,17 +29,14 @@ export const Currency = () => {
   return (
     <Box
       sx={{
-        width: '100%',
-        maxWidth: mediaMui.desktop
-          ? '395px'
-          : mediaMui.tablet
-          ? '336px'
-          : '280px',
+        width: mediaMui.desktop ? '395px' : mediaMui.tablet ? '336px' : '280px',
+        minHeight: mediaMui.desktop ? '300px' : '220px',
         overflow: 'hidden',
         position: 'relative',
         overflow: 'hidden',
         backgroundColor: '#F0F8FF',
         borderRadius: '30px',
+        margin: !mediaMui.tablet ? '0 auto' : null,
       }}
     >
       <Box
@@ -68,6 +65,10 @@ export const Currency = () => {
                   style={{
                     width: column.minWidth,
                     backgroundColor: 'transparent',
+                    fontWeight: 700,
+                    fontSize: '18px',
+                    lineHeight: 'calc(27 / 18)',
+                    padding: '12px',
                   }}
                 >
                   {column.label}
@@ -75,9 +76,9 @@ export const Currency = () => {
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody sx={{ padding: '6px' }}>
             {currencyData.map((row, i) => (
-              <TableRow hover role="checkbox" tabIndex={-1} key={i}>
+              <TableRow role="checkbox" tabIndex={-1} key={i}>
                 {columns(currencyData).map(column => {
                   const value = row[column.id];
                   return (
