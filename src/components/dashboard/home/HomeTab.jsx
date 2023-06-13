@@ -52,36 +52,55 @@ const HomeTab = () => {
           <Table stickyHeader>
             <TableHead>
               <TableRow>
-                {columns(transactionsData).map(column => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{
-                      width: column.minWidth,
-                      backgroundColor: 'transparent',
-                      fontWeight: 700,
-                      fontSize: '18px',
-                      lineHeight: 'calc(27 / 18)',
-                      padding: '12px',
-                      backgroundColor: 'white',
-                    }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
+                {columns(transactionsData).map(column => {
+                  console.log(column.id);
+                  return (
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      style={{
+                        width: column.minWidth,
+                        backgroundColor: 'transparent',
+                        fontWeight: 700,
+                        fontSize: '18px',
+                        lineHeight: 'calc(27 / 18)',
+                        padding: '12px',
+                        borderTopLeftRadius:
+                          column.id === 'date' ? '30px' : null,
+                        borderBottomLeftRadius:
+                          column.id === 'date' ? '30px' : null,
+                        borderTopRightRadius:
+                          column.id === 'sum' ? '30px' : null,
+                        borderBottomRightRadius:
+                          column.id === 'sum' ? '30px' : null,
+                        backgroundColor: 'background.category',
+                        borderBottom: 'none',
+                      }}
+                    >
+                      {column.label}
+                    </TableCell>
+                  );
+                })}
               </TableRow>
             </TableHead>
             <TableBody sx={{ padding: '6px' }}>
               {dataPage({
                 tableData: transactionsData,
                 page: 1,
-                perPage: 8,
+                perPage: 10,
               }).map((row, i) => (
                 <TableRow role="checkbox" tabIndex={-1} key={i}>
                   {columns(transactionsData).map(column => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id} align={column.align}>
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        sx={{
+                          borderBottom: 'none',
+                          boxShadow: '0 1px 0 0 #FFF9',
+                        }}
+                      >
                         {value}
                       </TableCell>
                     );

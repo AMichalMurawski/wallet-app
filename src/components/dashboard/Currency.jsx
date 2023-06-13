@@ -30,12 +30,7 @@ export const Currency = () => {
     <Box
       sx={{
         width: mediaMui.desktop ? '395px' : mediaMui.tablet ? '336px' : '280px',
-        minHeight: mediaMui.desktop ? '300px' : '220px',
-        overflow: 'hidden',
         position: 'relative',
-        overflow: 'hidden',
-        backgroundColor: '#F0F8FF',
-        borderRadius: '30px',
         margin: !mediaMui.tablet ? '0 auto' : null,
       }}
     >
@@ -56,19 +51,27 @@ export const Currency = () => {
       </Box>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader>
-          <TableHead sx={{ backgroundColor: '#E1EBEE' }}>
+          <TableHead>
             <TableRow>
               {columns(currencyData).map(column => (
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{
+                  sx={{
                     width: column.minWidth,
-                    backgroundColor: 'transparent',
                     fontWeight: 700,
                     fontSize: '18px',
                     lineHeight: 'calc(27 / 18)',
                     padding: '12px',
+                    borderTopLeftRadius:
+                      column.id === 'currency' ? '30px' : null,
+                    borderBottomLeftRadius:
+                      column.id === 'currency' ? '30px' : null,
+                    borderTopRightRadius: column.id === 'sale' ? '30px' : null,
+                    borderBottomRightRadius:
+                      column.id === 'sale' ? '30px' : null,
+                    backgroundColor: 'background.category',
+                    borderBottom: 'none',
                   }}
                 >
                   {column.label}
@@ -82,7 +85,14 @@ export const Currency = () => {
                 {columns(currencyData).map(column => {
                   const value = row[column.id];
                   return (
-                    <TableCell key={column.id} align={column.align}>
+                    <TableCell
+                      key={column.id}
+                      align={column.align}
+                      sx={{
+                        borderBottom: 'none',
+                        boxShadow: '0 1px 0 0 #FFF9',
+                      }}
+                    >
                       {value}
                     </TableCell>
                   );

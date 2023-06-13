@@ -8,17 +8,19 @@ const DahboardPage = () => {
   const mediaMui = useMediaMui();
 
   return (
-    <Box>
+    <Box sx={{ minHeight: '100vh' }}>
       <Header />
       <Box
         sx={{
           width: 1,
-          maxWidth: '1280px',
-          minWidth: '320px',
+          height: 1,
+          maxWidth: 1280,
+          minWidth: 320,
           margin: '0 auto',
           padding: '40px 16px',
           display: 'flex',
           flexDirection: mediaMui.desktop ? 'row-reverse' : 'column-reverse',
+          gap: mediaMui.desktop ? '69px' : '20px',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
         }}
@@ -28,10 +30,13 @@ const DahboardPage = () => {
             <Outlet />
           </Suspense>
         </Box>
+        {mediaMui.desktop ? (
+          <Box sx={{ height: 1, boxShadow: '0 0 1px 1px #000' }}></Box>
+        ) : null}
         <Box
           component="aside"
           sx={{
-            width: 1,
+            width: !mediaMui.desktop ? 1 : null,
             display: mediaMui.tablet ? 'flex' : null,
             flexWrap: mediaMui.tablet && !mediaMui.desktop && 'wrap',
             flexDirection: mediaMui.desktop ? 'column' : null,
