@@ -1,38 +1,13 @@
-import {
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-} from '@mui/material';
+import { Box } from '@mui/material';
 import { useMediaMui } from '../../../hooks';
 import { Balance } from '../Balance';
 import { transactionsData } from '../../../devUtils/transactionsData';
-
-const columns = tableData => {
-  const data = tableData[0];
-  const col = [];
-  for (const key in data) {
-    const id = key;
-    const label = key.charAt(0).toUpperCase() + key.slice(1);
-    const width = '33%';
-    col.push({ id, label, width });
-  }
-  return col;
-};
-
-const dataPage = ({ tableData, page, perPage }) => {
-  const from = (page - 1) * perPage;
-  const to = page * perPage;
-  const data = tableData.slice(from, to);
-  return data;
-};
+import { HomeTable } from './HomeTable';
+import { HomeCard } from './HomeCard';
 
 const HomeTab = () => {
   const mediaMui = useMediaMui();
+
   return (
     <Box sx={{ minHeight: 1 }}>
       {!mediaMui.tablet ? (
@@ -48,68 +23,11 @@ const HomeTab = () => {
         </Box>
       ) : null}
       <Box>
-        <TableContainer>
-          <Table stickyHeader>
-            <TableHead>
-              <TableRow>
-                {columns(transactionsData).map(column => {
-                  console.log(column.id);
-                  return (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      style={{
-                        width: column.minWidth,
-                        backgroundColor: 'transparent',
-                        fontWeight: 700,
-                        fontSize: '18px',
-                        lineHeight: 'calc(27 / 18)',
-                        padding: '12px',
-                        borderTopLeftRadius:
-                          column.id === 'date' ? '30px' : null,
-                        borderBottomLeftRadius:
-                          column.id === 'date' ? '30px' : null,
-                        borderTopRightRadius:
-                          column.id === 'sum' ? '30px' : null,
-                        borderBottomRightRadius:
-                          column.id === 'sum' ? '30px' : null,
-                        backgroundColor: 'background.category',
-                        borderBottom: 'none',
-                      }}
-                    >
-                      {column.label}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            </TableHead>
-            <TableBody sx={{ padding: '6px' }}>
-              {dataPage({
-                tableData: transactionsData,
-                page: 1,
-                perPage: 10,
-              }).map((row, i) => (
-                <TableRow role="checkbox" tabIndex={-1} key={i}>
-                  {columns(transactionsData).map(column => {
-                    const value = row[column.id];
-                    return (
-                      <TableCell
-                        key={column.id}
-                        align={column.align}
-                        sx={{
-                          borderBottom: 'none',
-                          boxShadow: '0 1px 0 0 #FFF9',
-                        }}
-                      >
-                        {value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        {mediaMui.tablet ? (
+          <HomeTable transactionsData={transactionsData} />
+        ) : (
+          <HomeCard transactionsData={transactionsData} />
+        )}
       </Box>
     </Box>
   );
